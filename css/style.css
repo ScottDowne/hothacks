@@ -229,6 +229,28 @@ html {
 		width: 100%;
 }
 
+#mainTitle {
+	text-align: right;
+	color: white;
+	width: 75%;
+	margin-left: auto;
+	margin-right:auto;
+	padding-top: 15%;
+	}
+	
+#mainTitle h1 {
+	font-family: 'Exo', sans-serif;
+	font-size: 4em;	
+	margin: 0;
+	
+}
+
+#mainTitle h2 {
+	font-family: ;
+	font-size: 2em;	
+	margin: 0;
+}
+
 
 
 
