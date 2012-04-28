@@ -218,6 +218,10 @@ td { vertical-align: top; }
    Author: Bailey
    ========================================================================== */
 
+#main {
+	background-color: black;
+}
+
 #mainTitle {
 	text-align: center;
 	color: white;
@@ -237,6 +241,21 @@ td { vertical-align: top; }
 	font-family: ;
 	font-size: 2em;	
 	margin: 0;
+}
+
+#leftImage {
+	position: absolute;
+	z-index:2;
+	left: 0px;
+	top: 0px;
+	
+	
+}
+
+#rightImage {
+	position: absolute;
+	max-height: 800px;
+	z-index:1;
 }
 
 
