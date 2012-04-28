@@ -100,13 +100,14 @@
           
           p.hothack({
             start: iteration,
-            end: iteration+=0.5,
-            image: "",
+            end: iteration+=0.1,
             target: "wave",
-            text: "hello world",
             data: current.slice(0),
             m: current.length,
-            pause: pause
+            pause: false,
+            text: "hello world",
+            image: "http://americanhistory.si.edu/onthemove/img/crops/665.jpg",
+            content: "content"
           });
           
         }
@@ -177,5 +178,6 @@
   <body>
     <div id="wave"></div>
     <button id="button">next ></button>
+    <div id="content"></div>
   </body>
 </html>

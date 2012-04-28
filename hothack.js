@@ -97,11 +97,28 @@ function transitionStack() {
     
       //var dates = dates2.slice(0);
     
-      options.pause && this.pause();
-      //console.log( this );
 
       // clear any existing content
       document.getElementById( options.target ).innerHTML = "";
+      document.getElementById( "content" ).innerHTML = "";
+      
+      if ( options.pause || options.image || options.text ) {
+      
+        this.pause();
+        if ( options.content ) {
+        
+          var image = document.createElement( "img" );
+          image.src = options.image;
+          document.getElementById( options.content ).appendChild( image );
+        
+          var div = document.createElement( "div" );
+          div.innerHTML = options.text;
+          document.getElementById( options.content ).appendChild( div );
+          
+        }
+      }
+      //options.pause && this.pause();
+      //console.log( this );
       
       var n = 1, // number of layers
           m = options.m, // number of samples per layer
@@ -154,6 +171,8 @@ data = [options.data];
         //.transition()
           //.delay(function(d, i) { return i * 10; })
           .attr("y", y1)
+          .attr("fill", "#00F")
+          //.attr("style", "color: -moz-linear-gradient(top, #55aaee, #003366)" )//background: -moz-linear-gradient(top, #55aaee, #003366)
           .attr("height", function(d) { return y0(d) - y1(d); });
 
       bars.append("text")
