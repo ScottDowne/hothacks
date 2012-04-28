@@ -82,6 +82,29 @@
     
       Popcorn.player( "hothackPlayer" );
     var i = 0;
+
+    function addCountries(){
+      var option,
+          countries = document.getElementById( "countries" );
+
+      Popcorn.forEach( data, function( value, key, item ) {
+        option = document.createElement( "OPTION" );
+        option.value = option.innerHTML = key;
+        countries.appendChild(option);
+      });
+    }
+
+    function populateYears(){
+      var year = new Date().getFullYear(),
+          option,
+          years = document.getElementById( "year" );
+
+      for( i = 0; i < 80; i++ ){
+        option = document.createElement( "option" );
+        option.value = option.innerHTML = year - i;
+        years.appendChild( option );
+      }
+    }
       document.addEventListener( "DOMContentLoaded", function( e ) {
       
         var p = Popcorn.hothackPlayer( "#wave" );
@@ -172,6 +195,8 @@
         
           p.play();
         }, false );
+        addCountries();
+        populateYears();
       }, false );
     </script>
   </head>
@@ -179,5 +204,22 @@
     <div id="wave"></div>
     <button id="button">next ></button>
     <div id="content"></div>
+    <div style="border: 1px solid; width: 400px; height: 200px; position:absolute; z-index:100; top: 100px; left: 100px;" id="form">
+      My immigrant story begins in 
+      <select id="year"></select> (year), <br>
+      when 
+      <select id="relation">
+        <option value="I" selected>I</option>
+        <option value="mother">Mother</option>
+        <option value="father">Father</option>
+        <option value="gfather">Grand Father</option>
+        <option value="gmother">Grand Mother</option>
+      </select> (I/ my relative) <br>
+      left 
+      <select id="countries">
+      </select> (country) for the U.S. <br><br>
+      I am <input type="text" /><br>
+      I believe <input type="text" />
+    </div>
   </body>
 </html>
