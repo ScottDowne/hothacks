@@ -218,23 +218,11 @@ td { vertical-align: top; }
    Author: Bailey
    ========================================================================== */
 
-
-html { 
-        background: url('../img/josiebackground.jpg') no-repeat center center fixed; 
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-		height: 100%;
-		width: 100%;
-}
-
 #mainTitle {
-	text-align: right;
+	text-align: center;
 	color: white;
-	width: 75%;
-	margin-left: auto;
-	margin-right:auto;
+	width: 70%;
+	float: right;
 	padding-top: 15%;
 	}
 	
@@ -250,15 +238,6 @@ html {
 	font-size: 2em;	
 	margin: 0;
 }
-
-
-
-
-
-
-
-
-
 
 
 
