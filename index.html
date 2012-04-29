@@ -53,20 +53,54 @@
 	          xfbml      : true,
 	          oauth      : true,
 	        });
+	
           
           FB.login(function(response) {
 
             //if (response.session) {
 
-               //var userId;            
+               var userId;            
                var userImg = document.createElement( "img" );
                //var video = document.getElementById( "video" );
                //video.style.display = "block";
                
-               userImg.src = "graph.facebook.com/" + response.authResponse.userID + "/picture?type=small";
+               userImg.src = "graph.facebook.com/" + response.authResponse.userID + "/photos";
                //console.log( userImg );
                
                //FB.api('/me', function(response) {
+
+				
+	               
+	                   if (response.authResponse) {
+							var accessToken = response.authResponse.accessToken;
+							
+	                       FB.api("/me/photos", function(info) {
+								if(info.data&&info.data[0].images){//we have data from FB
+								
+									for(i=0;i<=50;i++){
+									//	alert(i);
+										if(info.data[i].images[2]){
+										//	alert(info.data[i].images[2].source);
+											$('#photos').append( '<img src="' + info.data[i].images[2].source + '" />' ); 
+										}
+									}
+								}
+								console.log(info);
+							//	alert(info.data[0].images[2].source);
+	                           //login(response, info);
+	                       });
+	                   } else {
+	                       //user cancelled login or did not grant authorization
+	                       showLoader(false);
+	                   }
+				
+
+
+
+
+
+
+
 
                //  userId = response.name;
                //});
@@ -79,6 +113,7 @@
                document.getElementById( "main" ).style.display = "none";
                document.getElementById( "watchMain" ).style.display = "block";
                
+			
                //document.getElementById( "main" ).style.backgroundImage = "url();";
                
                /*FB.api('/me/friends', {fields: "name,id,location"}, function(response) {
@@ -134,8 +169,12 @@
 			<img src="img/haru_josie_hug.png" width="861" height="800" alt="Haru Josie Hug"></div>
 		<div id="rightImage">
 			<div id="photos">
-				<img src="http://placekitten.com/300/235" alt=""><img src="http://placedog.com/300/323" alt=""><img src="http://placekitten.com/300/308" alt=""><img src="http://placedog.com/300/306" alt=""><img src="http://placekitten.com/300/378" alt=""><img src="http://placedog.com/300/353" alt=""><img src="http://placekitten.com/300/307" alt=""><img src="http://placedog.com/300/302" alt=""><img src="http://placekitten.com/300/337" alt=""><img src="http://placedog.com/300/260" alt=""><img src="http://placekitten.com/300/393" alt=""><img src="http://placedog.com/300/350" alt=""><img src="http://placekitten.com/300/298" alt=""><img src="http://placedog.com/300/252" alt=""><img src="http://placekitten.com/300/345" alt=""><img src="http://placedog.com/300/331" alt=""><img src="http://placekitten.com/300/337" alt=""><img src="http://placedog.com/300/251" alt=""><img src="http://placekitten.com/300/218" alt=""><img src="http://placedog.com/300/343" alt=""><img src="http://placekitten.com/300/264" alt=""><img src="http://placedog.com/300/226" alt=""><img src="http://placekitten.com/300/371" alt=""><img src="http://placedog.com/300/356" alt=""><img src="http://placekitten.com/300/318" alt=""><img src="http://placedog.com/300/216" alt=""><img src="http://placekitten.com/300/317" alt=""><img src="http://placedog.com/300/400" alt=""><img src="http://placekitten.com/300/279" alt=""><img src="http://placedog.com/300/400" alt="">	
+				<!-- <img src="http://placekitten.com/300/235" alt=""><img src="http://placedog.com/300/323" alt=""><img src="http://placekitten.com/300/308" alt=""><img src="http://placedog.com/300/306" alt=""><img src="http://placekitten.com/300/378" alt=""><img src="http://placedog.com/300/353" alt=""><img src="http://placekitten.com/300/307" alt=""><img src="http://placedog.com/300/302" alt=""><img src="http://placekitten.com/300/337" alt=""><img src="http://placedog.com/300/260" alt=""><img src="http://placekitten.com/300/393" alt=""><img src="http://placedog.com/300/350" alt=""><img src="http://placekitten.com/300/298" alt=""><img src="http://placedog.com/300/252" alt=""><img src="http://placekitten.com/300/345" alt=""><img src="http://placedog.com/300/331" alt=""><img src="http://placekitten.com/300/337" alt=""><img src="http://placedog.com/300/251" alt=""><img src="http://placekitten.com/300/218" alt=""><img src="http://placedog.com/300/343" alt=""><img src="http://placekitten.com/300/264" alt=""><img src="http://placedog.com/300/226" alt=""><img src="http://placekitten.com/300/371" alt=""><img src="http://placedog.com/300/356" alt=""><img src="http://placekitten.com/300/318" alt=""><img src="http://placedog.com/300/216" alt=""><img src="http://placekitten.com/300/317" alt=""><img src="http://placedog.com/300/400" alt=""><img src="http://placekitten.com/300/279" alt=""><img src="http://placedog.com/300/400" alt=""> -->	
 			</div></div>
+			
+<script>
+	 
+</script>
 	<div class="block" style="height: 300px;">
 		<div class="center">
 		<div id="leftImageText"><a href=""><h1>watch an immigration story</h1></a></div>
