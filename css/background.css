@@ -24,6 +24,12 @@ body {
   left: 0px;
   right: 0px;
   bottom: 0px;
+  background: url( '../img/WaveBackground2.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
 }
 #share {
   display: none;
@@ -32,4 +38,10 @@ body {
   left: 0px;
   right: 0px;
   bottom: 0px;
+  background: url( '../img/Create your story background.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
 }
