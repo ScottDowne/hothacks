@@ -109,18 +109,45 @@ function transitionStack() {
       if ( options.pause || options.image || options.text ) {
 
         this.pause();
+        var p = this;
 
         if ( options.content ) {
         
+        if (options.image.length != null) {
+        
+          for ( var i = 0; i < options.image.length; i++ ) {
+          
+            var image = document.createElement( "img" );
+            image.src = options.image[i];
+            document.getElementById( options.content ).appendChild( image );
+          }
+        } else {
           var image = document.createElement( "img" );
           image.src = options.image;
           document.getElementById( options.content ).appendChild( image );
+        }
+        
         
           var div = document.createElement( "div" );
           div.style.color = "white";
-          div.innerHTML = options.text;
+          div.innerHTML = options.text || "";
           document.getElementById( options.content ).appendChild( div );
-          document.getElementById( options.content ).innerHTML += "<h2><span><div id='feelings'></div><div id='beliefs'></div></span></h2>";
+          //document.getElementById( options.content ).innerHTML = options.text || "";//+= "<h2><span><div id='feelings'></div><div id='beliefs'></div></span></h2>";
+        }
+        
+        if ( options.audio ) {
+        
+          var audio = document.getElementById( "audio" );
+          console.log( audio );
+          audio.addEventListener( "loadedmetadata", function( e ) {
+          
+            audio.addEventListener( "ended", function() {
+            
+              p.play();
+            }, false );
+            audio.play();
+          }, false );
+          audio.src = options.audio;
         }
       }
       //options.pause && this.pause();

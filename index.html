@@ -183,9 +183,26 @@
             if ( document.getElementById( "countries" ).value === "Japan" ) {
               if ( i === 9 ) {
               
-                options.image = "Japan/1_jwavephoto2.jpg";
+                options.image = ["Japan/1_jwavephoto1.jpg", "Japan/1_jwavephoto2.jpg", "Japan/1_jwavephoto3.jpg" ];
                 options.audio = "Japan/audio/1_Japanese_1-2.wav";
                 options.content = "waveContent";
+              } else if ( i === 11 ) {
+
+                options.image = ["Japan/2_jwavephoto1.jpg", "Japan/2_jwavephoto2.jpg", "Japan/2_jwavephoto3.jpg" ];
+                options.audio = "Japan/audio/2_Japanese_1-2.wav";
+                options.content = "waveContent";
+              } else if ( i === 12 ) {
+              
+                options.image = ["Japan/3_jwavephoto1.jpg", "Japan/3_jwavephoto2.jpg", "Japan/3_jwavephoto3.jpg" ];
+                options.audio = "Japan/audio/3_Japanese_1-2.wav";
+                options.content = "waveContent";
+              
+              } else if ( i === 17 ) {
+              
+                options.image = ["Japan/4_jwavephoto1.jpg"];
+                options.audio = "Japan/audio/4_Japanese_1-2.wav";
+                options.content = "waveContent";
+              
               }
 //            1st stop at 1910
 //2nd stop at 1930
@@ -197,14 +214,38 @@
 //2nd stop 1940
 //3rd stop 1950
 //4th stop 2010
+              if ( i === 10 ) {
+              
+                options.image = ["Mexico/1_photo1.jpg", "Mexico/1_photo2.jpg", "Mexico/1_photo3.jpg" ];
+                options.audio = "Mexico/audio/1_Mexico.wav";
+                options.content = "waveContent";
+              } else if ( i === 13 ) {
+
+                options.image = ["Mexico/2_photo1.jpg", "Mexico/2_photo2.jpg", "Mexico/2_photo3.jpg" ];
+                options.audio = "Mexico/audio/2_Mexico.wav";
+                options.content = "waveContent";
+              } else if ( i === 14 ) {
+              
+                options.image = ["Mexico/3_photo1.jpg", "Mexico/3_photo2.jpg", "Mexico/3_photo3.jpg" ];
+                options.audio = "Mexico/audio/3_Mexico.wav";
+                options.content = "waveContent";
+              
+              } else if ( i === 20 ) {
+              
+                options.image = ["Mexico/4_photo1.jpg", "Mexico/4_photo2.jpg", "Mexico/4_photo3.jpg" ];
+                options.audio = "mexico/audio/4_Mexico.wav";
+                options.content = "waveContent";
+              
+              }
             }// else {
             //var pause = false;
             //console.log( typeof document.getElementById( "year" ).value, typeof ""+i, document.getElementById( "year" ).value == i );
             if ( i == document.getElementById( "year" ).value ) {
             
-              options.image = userImage;
+              options.image = [userImage];
               options.content = "waveContent";
               options.text = userFeelingsContent + "</br>" + userBeliefsContent;
+              options.audio = "Mexico/audio/Your_story_Audio_1-2.wav";
               
           //console.log( options );
             //  pause = true;
@@ -452,5 +493,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
+    <audio id="audio"></audio>
 </body>
 </html>
