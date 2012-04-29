@@ -85,13 +85,19 @@
 
     function addCountries(){
       var option,
-          countries = document.getElementById( "countries" );
-
+          countries = document.getElementById( "countries" ),
+          data2 = [];
       Popcorn.forEach( data, function( value, key, item ) {
-        option = document.createElement( "OPTION" );
-        option.value = option.innerHTML = key;
-        countries.appendChild(option);
+        data2.push(key);
       });
+
+      data2.sort();
+
+      for( i = 0; i < data2.length; i++){
+        option = document.createElement( "OPTION" );
+        option.value = option.innerHTML = data2[i];
+        countries.appendChild( option );
+      }
     }
 
     function populateYears(){
@@ -198,6 +204,10 @@
         addCountries();
         populateYears();
       }, false );
+      
+      function addToWave(){
+        alert("This isn't coded yet!");
+      }
     </script>
   </head>
   <body>
@@ -207,19 +217,13 @@
     <div style="border: 1px solid; width: 400px; height: 200px; position:absolute; z-index:100; top: 100px; left: 100px;" id="form">
       My immigrant story begins in 
       <select id="year"></select> (year), <br>
-      when 
-      <select id="relation">
-        <option value="I" selected>I</option>
-        <option value="mother">Mother</option>
-        <option value="father">Father</option>
-        <option value="gfather">Grand Father</option>
-        <option value="gmother">Grand Mother</option>
-      </select> (I/ my relative) <br>
+      when <input type="text" id="relative" /> (I/ my relative) <br>
       left 
       <select id="countries">
       </select> (country) for the U.S. <br><br>
-      I am <input type="text" /><br>
-      I believe <input type="text" />
+      I am <input type="text" id="feeling" /><br>
+      I believe <input type="text" id="beliefs" /><br><br>
+      <button onclick="addToWave();" style="float: right;">Add To The Wave</button>
     </div>
   </body>
 </html>
