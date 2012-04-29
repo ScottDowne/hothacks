@@ -238,6 +238,10 @@
         document.getElementById( "beliefsOverlay" ).innerHTML = userBeliefsContent = "I believe " + element.value;
         //div.innerHTML = "<strong>I believe </strong>" + element.value;
       }
+
+      function goToVid( element ){
+        window.location = "caretaker.html";
+      }
     
     function populateYears(){
       var year = new Date().getFullYear(),
@@ -397,7 +401,7 @@
 
 	<div class="block" style="height: 300px;">
 		<div class="center">
-		<div id="leftImageText"><a href="#"><h1>watch an immigration story</h1></a></div>
+		<div id="leftImageText"><a href="#" onclick="goToVid(this);"><h1>watch an immigration story</h1></a></div>
 		<div id="rightImageText"><a href="#"><h1>share your story</h1></a></div>
 		</div>
 	</div>
