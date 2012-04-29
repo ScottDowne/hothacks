@@ -300,6 +300,11 @@ td { vertical-align: top; }
 	z-index:1;
 }
 
+#play {
+	position: relative;
+	z-index:5;
+}
+
 #rightImage img{
 	max-height: 100%;
 }
