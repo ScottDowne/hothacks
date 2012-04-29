@@ -130,8 +130,8 @@ function transitionStack() {
 
 data = [options.data];
       var margin = 20,
-          width = 960,
-          height = 500 - .5 - margin,
+          width = document.body.offsetWidth,
+          height = 400 - .5 - margin,
           mx = m,
           my = d3.max(data, function(d) {
             return d3.max(d, function(d) {
