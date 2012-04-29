@@ -253,8 +253,11 @@ td { vertical-align: top; }
 }
 
 #rightImage {
+	left:500px;
+	top:0px;
 	position: absolute;
 	max-height: 800px;
+	overflow: hidden;
 	z-index:1;
 }
 
