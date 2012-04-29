@@ -126,6 +126,7 @@
     var original = [];
     var current = [];
     var iteration = 0;
+    var userImage;
     
     Popcorn.player( "hothackPlayer" );
     var i = 0;
@@ -151,43 +152,57 @@
         //var span = document.getElementById( "info" );
 
         //alert("More to come!");
+        document.getElementById( "graph" ).style.display = "block";
+        document.getElementById( "share" ).style.display = "none";
 
         original = data[ document.getElementById( "countries" ).value ];
         
         var p = Popcorn.hothackPlayer( "#wave" );
 
-        while ( original.length ) {
+        if ( document.getElementById( "countries" ).value === "Japan" ) {
         
-          var pause = false;
+        } else if ( document.getElementById( "countries" ).value === "Mexico" ) {
+        
+        }// else {
+        i = 0;
+          while ( original.length ) {
           
-          if ( i === 8 || i === 10) {
+            var options = {
+              start: iteration,
+              end: iteration+=0.1,
+              target: "wave",
+              data: current.slice(0),
+              m: current.length,
+              pause: false,
+              //text: "hello world",
+              //image: "http://americanhistory.si.edu/onthemove/img/crops/665.jpg",
+              //content: "waveContent"
+            }
+            //var pause = false;
+            //console.log( typeof document.getElementById( "year" ).value, typeof ""+i, document.getElementById( "year" ).value == i );
+            if ( i == document.getElementById( "year" ).value ) {
+            
+              options.image = userImage;
+              options.content = "waveContent";
+              options.text = "";
+              
+          console.log( options );
+            //  pause = true;
+            }
+            //console.log( i );
+            i++;
           
-            pause = true;
+            current.push( {y: original.shift(), x: current.length, y0: 0} );
+
+            p.hothack(options);
+            
           }
-          i++;
-        
-          current.push( {y: original.shift(), x: current.length, y0: 0} );
-          
-          p.hothack({
-            start: iteration,
-            end: iteration+=0.1,
-            target: "wave",
-            data: current.slice(0),
-            m: current.length,
-            pause: false,
-            //text: "hello world",
-            //image: "http://americanhistory.si.edu/onthemove/img/crops/665.jpg",
-            //content: "waveContent"
-          });
-          
-        }
+        //}
         p.play();
         document.getElementById( "button" ).addEventListener( "click", function( e ) {
         
           p.play();
         }, false );
-        document.getElementById( "graph" ).style.display = "block";
-        document.getElementById( "share" ).style.display = "none";
       }
 
       function addFeeling( element ){
@@ -210,7 +225,8 @@
 
       for( i = 0; i < dates.length; i++ ){
         option = document.createElement( "option" );
-        option.value = option.innerHTML = dates[i];//year - i;
+        option.value = i;
+        option.innerHTML = dates[i];//year - i;
         years.appendChild( option );
       }
     }      
@@ -233,7 +249,7 @@
                //var video = document.getElementById( "video" );
                //video.style.display = "block";
                
-               userImg.src = "https://graph.facebook.com/" + response.authResponse.userID + "/picture?type=large";
+               userImg.src = userImage = "https://graph.facebook.com/" + response.authResponse.userID + "/picture?type=large";
                //console.log( userImg );
                //document.getElementById( "rightImage" ).appendChild( userImg );
                
@@ -329,9 +345,11 @@
 
 
   <div id="graph">
-    <div id="wave"></div>
+    <div style="width: 100%;" id="waveContent">
+
+    </div>
     <button id="button">next ></button>
-    <div id="waveContent"></div>
+    <div style="position: absolute; bottom: 0px;" id="wave"></div>
   </div>
 
 

@@ -104,10 +104,11 @@ function transitionStack() {
       // hard coding in target
       // should make this dynamic
       document.getElementById( "waveContent" ).innerHTML = "";
-      
+
       if ( options.pause || options.image || options.text ) {
       
         this.pause();
+
         if ( options.content ) {
         
           var image = document.createElement( "img" );
