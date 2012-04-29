@@ -100,7 +100,10 @@ function transitionStack() {
 
       // clear any existing content
       document.getElementById( options.target ).innerHTML = "";
-      document.getElementById( "content" ).innerHTML = "";
+      
+      // hard coding in target
+      // should make this dynamic
+      document.getElementById( "waveContent" ).innerHTML = "";
       
       if ( options.pause || options.image || options.text ) {
       
@@ -199,6 +202,7 @@ stop-color:rgb(192,48,100);stop-opacity:1
           //.attr("width", x({x: .9}))
           //.attr("x", 0)
           .attr("y", y1)
+          .attr( "fill", "white" )
           //.attr("text-anchor", "middle")
           //.attr("height", 0)
           .text(y3);
@@ -212,6 +216,7 @@ stop-color:rgb(192,48,100);stop-opacity:1
           .attr("dx", x({x: .45}))
           .attr("dy", ".71em")
           .attr("text-anchor", "middle")
+          .attr( "fill", "white" )
           .text(function(d, i) { return dates[i]; });
           //.text(function(d, i) { return i; });
 

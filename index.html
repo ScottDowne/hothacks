@@ -28,6 +28,10 @@
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="js/libs/modernizr-2.5.3.min.js"></script>
+    <script src="d3.v2.min.js"></script>
+    <script src="popcorn.js"></script>
+    <script src="popcorn.player.js"></script>
+    <script src="hothack.js"></script>
 	<!-- Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Exo:400,900' rel='stylesheet' type='text/css'>
 </head>
@@ -45,6 +49,172 @@
 		<!-- This script won't do anything until we make the fb app portion -->
 		<div id="fb-root"></div>
 	    <script>
+      
+    var data = {"Austria":  [0,0,0,0,2700,54529,204805,268218,532416,589174,31392,6678,8496,81354,17571,14239,15374,18234,21151,3319,3654],
+                "Hungary":  [0,0,0,0,483,5598,109982,203350,685567,565553,29499,7224,5181,31661,10019,6148,5063,9295,12778,1006,1049],
+                "Belgium":  [28,20,3996,5765,5785,6991,18738,19642,37429,32574,21511,4013,12473,18885,9647,5413,7028,7077,8157,732,700],
+                "Bulgaria":  [0,0,0,0,0,0,0,52,34651,27180,2824,1062,449,97,598,1011,1124,16948,40003,2465,2549],
+                "Czechoslovakia":  [0,0,0,0,0,0,0,0,0,0,101182,17757,8475,1624,2758,5654,5678,8970,18691,1510,1374],
+                "Denmark":  [173,927,671,3227,13553,29278,85342,56671,61227,45830,34406,3470,4549,10918,9797,4405,4847,6189,6049,545,473],
+                "Finland":  [0,0,0,0,3,286,9617,36719,0,0,16922,2438,2230,4923,4310,2829,2569,3970,3970,414,398],
+                "France" :  [7694,39330,75300,81778,35938,71901,48193,35616,67735,60335,54842,13761,36954,50113,46975,27018,32894,36552,45637,4339,3967],
+                "Germany":  [5753,124726,385434,976072,723734,751769,1445181,579072,328722,174227,386634,117736,119403,576905,209616,77142,85752,92207,122373,7929,7072],
+                "Greece":  [17,49,17,32,51,209,1807,12732,145402,198108,60774,10599,8605,45153,74173,102370,37729,25403,16841,966,1196],
+                "Ireland":  [51617,170672,656145,1029486,427419,422264,674061,405710,344940,166445,201644,28195,15701,47189,37788,11461,22210,65384,15642,1610,1533],
+                "Italy":  [430,2225,1476,8643,9853,46296,267660,603761,1930475,1229916,528133,85053,50509,189061,200111,150031,55562,75992,28329,2956,2670],
+                "Netherlands":  [1105,1377,7624,11122,8387,14267,52715,29349,42463,46065,29397,7791,13877,46703,37918,10373,11234,13345,17351,1520,1258],
+                "Norway":  [91,1149,12389,22202,82937,88644,185111,96810,182542,79488,70327,6901,8326,22813,17371,3927,3835,5211,4599,363,405],
+                "Sweden":  [91,1149,12389,22202,82937,90179,401330,237248,244439,112957,100002,6551,9000,21418,18779,6371,10106,12614,14783,1299,1125],
+                "Poland":  [19,366,105,1087,1886,11016,42910,107793,0,0,224420,26460,7774,6498,55773,33699,63483,172249,117921,7391,6634],
+                "Portugal":  [252,896,359,4218,4741,13990,15189,25874,65154,82489,44829,3518,6765,13928,70568,104754,42685,25497,11479,759,878],
+                "Romania" :  [0,0,0,0,0,0,5842,6808,57322,13566,67810,5264,1254,914,2339,10774,24753,48136,52154,3735,3679],
+                "Russia":  [86,280,520,423,1667,34977,173081,413382,1501301,1106998,61604,2473,605,453,2329,28132,33311,433427,167152,7502,8548],
+                "Spain" :  [2866,2016,1917,8803,6970,5571,3999,9189,24818,53262,47109,3669,2774,6880,40793,41718,22783,18443,17695,2040,2319],
+                "Switzerland":  [3148,4430,4819,24423,21124,25212,81151,37020,32541,22839,31772,5990,9904,17577,19193,8536,8316,11768,12173,868,861],
+                "United Kingdom":  [26336,74350,218572,445322,532956,578447,810900,328759,469518,371878,342762,61813,131794,195709,220213,133218,153644,156182,171979,14781,13443],
+                "Yugoslavia":  [0,0,0,0,0,0,0,0,0,0,49215,6920,2039,6966,17990,31862,16267,57039,131831,4772,4611],
+                "China":  [3,8,32,35933,54028,133139,65797,15268,19884,20916,30648,5874,16072,8836,14060,17627,170897,342058,591711,67634,83603],
+                "Hong Kong" :  [0,0,0,0,0,0,0,0,0,0,0,0,0,13781,67047,117350,112132,116894,57583,3263,3149],
+                "India":  [9,38,33,42,50,166,247,102,3026,3478,2076,554,1692,1922,18638,148018,231649,352528,590464,66185,66331],
+                "Iran" :  [0,0,7,0,4,17,18,26,0,0,208,198,1144,3195,9059,33763,98141,76899,76755,9078,9015],
+                "Israel" :  [0,0,0,0,0,0,0,0,0,0,0,0,98,21376,30911,36306,43669,41340,54081,5172,4389],
+                "Japan" :  [0,0,0,0,138,193,1583,13998,139712,77125,42057,2683,1557,41968,40956,52812,44150,66582,84552,7100,6751],
+                "Jordan" :  [0,0,0,0,0,0,0,0,0,0,0,0,3,4919,9230,25541,28928,42755,53550,9327,8211],
+                "Korea":  [0,0,0,0,0,0,0,0,0,0,0,0,83,4845,27048,241192,322708,179770,209758,22022,22748],
+                "Philippines" :  [0,0,0,0,0,4,1,19,605,0,0,457,4099,17245,70660,337726,502056,534338,545463,56399,55251],
+                "Syria":  [0,0,0,0,2,7,140,0,0,0,5307,2188,1179,1091,2432,8086,14534,22906,30807,7424,7983],
+                "Taiwan" :  [0,0,0,0,0,0,0,0,0,0,0,0,0,721,15657,83155,119051,132647,92657,6785,6206],
+                "Turkey":  [19,8,45,94,129,382,2478,27510,127999,160717,40374,1314,754,2980,9464,12209,19208,38687,48394,7435,9040],
+                "Vietnam" :  [0,0,0,0,0,0,0,0,0,0,0,0,0,290,2949,121716,200632,275379,289616,30065,33486],
+                "Canada and Newfoundland":  [2297,11875,34285,64171,117975,323974,492508,2668,123067,708715,949286,162703,160911,353169,433128,179267,156313,194788,236349,19491,19506],
+                "Mexico":  [3835,7187,3069,3446,1957,5133,2405,734,31188,185334,498945,32709,56158,273847,441824,621218,1009586,2757418,1704166,138717,142823],
+                "Cuba" :  [0,0,0,0,3420,8705,20134,23669,0,0,12769,10641,25976,73221,202030,256497,132552,159037,271742,33372,36261],
+                "Dominican Republic" :  [0,0,0,0,0,0,0,0,0,0,0,1165,4802,10219,83552,139249,221552,359818,291492,53890,46036],
+                "Haiti" :  [0,0,0,0,78,149,124,101,0,0,0,207,823,3787,28992,55166,121406,177446,203827,22336,21802],
+                "Jamaica":  [0,0,0,0,61,257,355,223,0,0,0,0,0,7397,62218,130226,193874,177143,172523,19439,19298],
+                "Other Caribbean":  [3061,11792,11803,12447,5250,5481,6987,7892,100960,120860,70713,6039,14684,21245,51051,127505,119959,130670,113773,10352,9615],
+                "Belize" :  [0,0,0,0,9,26,80,25,583,40,285,193,433,1133,4185,6747,14964,12600,9682,997,933],
+                "Costa Rica" :  [0,0,0,0,2,4,1,4,0,0,0,580,1965,4044,17975,12405,25017,17054,21571,2306,2230],
+                "El Salvador" :  [0,0,0,0,0,3,0,7,0,0,0,712,4885,5094,14405,29428,137418,273017,251237,18547,18477],
+                "Guatemala" :  [0,0,0,0,1,10,3,9,0,0,0,632,1303,4197,14357,23837,58847,126043,156992,10263,10795],
+                "Honduras" :  [0,0,0,0,0,11,4,4,0,0,0,809,1874,5320,15087,15653,39071,72880,63513,6381,6053],
+                "Nicaragua" :  [0,0,0,0,0,1,1,3,0,0,0,564,4393,7812,10383,10911,31102,80446,70015,3476,3314],
+                "Panama":  [0,0,0,0,0,0,0,0,0,0,0,1774,5282,12601,22177,21395,32957,28149,18120,1627,1447],
+                "Argentina" :  [0,0,0,0,7,58,64,36,0,0,0,1397,3108,16346,49384,30303,23442,30065,47955,4312,4335],
+                "Bolivia" :  [0,0,0,0,0,5,0,0,0,0,0,77,893,2759,6205,5635,9798,18111,21921,2211,2113],
+                "Brazil" :  [0,0,0,0,32,219,199,92,0,0,4627,1468,3653,11547,29238,18600,22944,50744,115404,12057,11643],
+                "Chile" :  [0,0,0,0,25,92,44,66,0,0,0,568,1320,4669,12384,15032,19749,18200,19792,1940,1854],
+                "Colombia" :  [0,0,0,0,2,196,1210,607,0,0,0,1278,3454,15567,68371,71265,105494,137985,236570,21861,22130],
+                "Ecuador" :  [0,0,0,0,0,7,14,33,0,0,0,320,2207,8574,34107,47464,48015,81358,107977,11463,11068],
+                "Guyana" :  [0,0,0,0,41,95,68,27,0,0,0,193,596,1131,4546,38278,85886,74407,70373,6441,6288],
+                "Paraguay" :  [0,0,0,0,0,2,0,0,0,0,0,36,85,576,1249,1486,3518,6082,4623,449,501],
+                "Peru" :  [0,0,0,0,35,127,25,79,0,0,0,460,1273,5980,19783,25311,49958,110117,137614,14063,13836],
+                "Suriname" :  [0,0,0,0,0,0,0,0,0,0,0,33,130,299,612,714,1357,2285,2363,202,167],
+                "Uruguay" :  [0,0,0,0,0,22,4,144,0,0,0,153,754,1026,4089,8416,7235,6062,9827,1286,1521],
+                "Venezuela":  [0,0,0,0,36,190,248,0,0,0,0,1360,2182,9927,20758,11007,22405,35180,82087,9497,9229],
+                "Egypt" :  [0,0,0,5,8,29,145,51,0,0,1063,781,1613,1996,5581,23543,26744,44604,81564,9822,9096],
+                "Ethiopia" :  [0,0,0,0,0,0,0,0,0,0,0,10,28,302,804,2588,12927,40097,87207,13853,13985],
+                "Liberia" :  [1,8,5,7,43,52,21,9,0,0,0,35,37,289,841,2391,6420,13587,23316,2924,3117],
+                "Morocco" :  [0,4,1,0,0,15,12,9,0,0,0,110,1463,3293,2880,1967,3471,15768,40844,4847,4249],
+                "South Africa" :  [0,0,0,0,79,48,23,9,0,0,0,312,1022,2278,4360,10002,15505,21964,32221,2705,2754],
+                "Australia" :  [2,1,2,104,96,8933,7250,3098,11191,11280,8404,2260,11201,8275,14986,18708,16901,24288,32728,3077,3062],
+                "New Zealand":  [0,0,0,2,6,39,21,12,0,0,935,790,2351,1799,3775,5018,6129,8600,12495,1046,1006] };
+      
+
+    var dates = [1820, 1830, 1840, 1850, 1860, 1870, 1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2011];
+
+    var original = [];
+    var current = [];
+    var iteration = 0;
+    
+    Popcorn.player( "hothackPlayer" );
+    var i = 0;
+
+    function addCountries(){
+      var option,
+          countries = document.getElementById( "countries" ),
+          data2 = [];
+      Popcorn.forEach( data, function( value, key, item ) {
+        data2.push(key);
+      });
+
+      data2.sort();
+
+      for( i = 0; i < data2.length; i++){
+        option = document.createElement( "OPTION" );
+        option.value = option.innerHTML = data2[i];
+        countries.appendChild( option );
+      }
+    }
+
+      function addToWave(){
+        //var span = document.getElementById( "info" );
+
+        //alert("More to come!");
+
+        original = data[ document.getElementById( "countries" ).value ];
+        
+        var p = Popcorn.hothackPlayer( "#wave" );
+
+        while ( original.length ) {
+        
+          var pause = false;
+          
+          if ( i === 8 || i === 10) {
+          
+            pause = true;
+          }
+          i++;
+        
+          current.push( {y: original.shift(), x: current.length, y0: 0} );
+          
+          p.hothack({
+            start: iteration,
+            end: iteration+=0.1,
+            target: "wave",
+            data: current.slice(0),
+            m: current.length,
+            pause: false,
+            //text: "hello world",
+            //image: "http://americanhistory.si.edu/onthemove/img/crops/665.jpg",
+            //content: "waveContent"
+          });
+          
+        }
+        p.play();
+        document.getElementById( "button" ).addEventListener( "click", function( e ) {
+        
+          p.play();
+        }, false );
+        document.getElementById( "graph" ).style.display = "block";
+        document.getElementById( "share" ).style.display = "none";
+      }
+
+      function addFeeling( element ){
+
+        document.getElementById( "feelingsOverlay" ).innerHTML = "I am " + element.value;
+        //div.innerHTML = "<strong>I am </strong>" + element.value;
+      }
+
+      function addBeliefs( element ){
+        //var div = document.getElementById( "beliefs" );
+
+        document.getElementById( "beliefsOverlay" ).innerHTML = "I believe " + element.value;
+        //div.innerHTML = "<strong>I believe </strong>" + element.value;
+      }
+    
+    function populateYears(){
+      var year = new Date().getFullYear(),
+          option,
+          years = document.getElementById( "year" );
+
+      for( i = 0; i < dates.length; i++ ){
+        option = document.createElement( "option" );
+        option.value = option.innerHTML = dates[i];//year - i;
+        years.appendChild( option );
+      }
+    }      
+
 	      window.fbAsyncInit = function() {
 	        FB.init({
 	          appId      : '290949350991319',
@@ -63,17 +233,27 @@
                //var video = document.getElementById( "video" );
                //video.style.display = "block";
                
-               userImg.src = "graph.facebook.com/" + response.authResponse.userID + "/picture?type=small";
+               userImg.src = "https://graph.facebook.com/" + response.authResponse.userID + "/picture?type=large";
                //console.log( userImg );
+               //document.getElementById( "rightImage" ).appendChild( userImg );
                
                //FB.api('/me', function(response) {
 
                //  userId = response.name;
                //});
+               
+               
                document.getElementById( "rightImageText" ).addEventListener( "click", function( e ) {
                
                  
                  document.getElementById( "watchMain" ).style.display = "none";
+                 addCountries();
+                 populateYears();
+                 document.getElementById( "userImage" ).src = "https://graph.facebook.com/" + response.authResponse.userID + "/picture?type=large";
+                 document.getElementById( "share" ).style.display = "block";
+                 document.getElementById( "feelingsOverlay" ).style.width = document.getElementById( "userImage" ).offsetWidth + "px";
+                 document.getElementById( "beliefsOverlay" ).style.width = document.getElementById( "userImage" ).offsetWidth + "px";
+                 //document.getElementById( "beliefsOverlay" ).style.top = document.getElementById( "beliefsOverlay" ).offsetTop + document.getElementById( "feelingsOverlay" ).offsetHeight + "px"; // = document.getElementById( "userImage" ).offsetWidth + "px";
                }, false );
                document.getElementById( "mainTitle" ).style.display = "none";
                document.getElementById( "main" ).style.display = "none";
@@ -133,7 +313,8 @@
 		<div id="leftImage">
 			<img src="img/haru_josie_hug.png" width="861" height="800" alt="Haru Josie Hug"></div>
 		<div id="rightImage">
-			<img src="img/426686_10100710959927410_920074_57565057_2131925104_n.jpg" alt="Kae Test"></div>
+			<img src="img/426686_10100710959927410_920074_57565057_2131925104_n.jpg" alt="Kae Test">
+    </div>
 	<div class="block" style="height: 300px;">
 		<div class="center">
 		<div id="leftImageText"><h1>watch an immigration story</h1></div>
@@ -143,6 +324,33 @@
   </div>
 
 
+  <div id="graph">
+    <div id="wave"></div>
+    <button id="button">next ></button>
+    <div id="waveContent"></div>
+  </div>
+
+
+  <div id="share">
+
+    <div style="border: 1px solid; width: 400px; color: #FFF; height: 200px; top: 100px; left: 100px; position: absolute;" id="form">
+      My immigrant story begins in 
+      <select id="year"></select> (year), <br>
+      when <input type="text" id="relative" /> (I/ my relative) <br>
+      left 
+      <select id="countries">
+      </select> (country) for the U.S. <br><br>
+      I am <input type="text" id="feeling" onblur="addFeeling(this);"/><br>
+      I believe <input type="text" id="beliefs" onblur="addBeliefs(this);"/><br><br>
+      <button onclick="addToWave();" style="float: right;">Add To The Wave</button>
+    </div>
+    
+    <img style="position: absolute; left: 520px; top: 100px;" id="userImage"></img>
+    <div style="color: white; text-shadow: black 2px 2px 6px; font-weight: bold; text-align: center; position: absolute; left: 520px; top: 100px;" id="feelingsOverlay"></div>
+    <div style="color: white; text-shadow: black 2px 2px 6px; font-weight: bold; text-align: center; position: absolute; left: 520px; top: 120px;" id="beliefsOverlay"></div>
+  </div>
+  
+  
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
