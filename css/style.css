@@ -269,9 +269,6 @@ td { vertical-align: top; }
 	margin-right:auto;
 }
 
-
-
-
 #leftImageText {
 	width: 60%;
 	position: relative;
@@ -294,12 +291,17 @@ td { vertical-align: top; }
 
 
 #rightImage {
+	background-color: black;
 	left:675px;
 	top:0px;
 	position: absolute;
-	max-height: 800px;
-/*	overflow: hidden;
-*/	z-index:1;
+	height: 800px;
+	overflow: hidden;
+	z-index:1;
+}
+
+#rightImage img{
+	max-height: 100%;
 }
 
 
