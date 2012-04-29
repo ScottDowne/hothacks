@@ -80,7 +80,7 @@
     var current = [];
     var iteration = 0;
     
-      Popcorn.player( "hothackPlayer" );
+    Popcorn.player( "hothackPlayer" );
     var i = 0;
 
     function addCountries(){
@@ -140,69 +140,13 @@
           });
           
         }
-        /*current.push( {y: original.shift(), x: current.length, y0: 0} );
-        
-        p.hothack({
-          start: 1,
-          end: 4,
-          image: "",
-          target: "wave",
-          text: "hello world",
-          data: current.slice(0),
-          m: current.length
-        });
-
-        current.push( {y: original.shift(), x: current.length, y0: 0} );
-        p.hothack({
-          start: 4,
-          end: 7,
-          image: "",
-          target: "wave",
-          text: "hello world",
-          data: current.slice(0),
-          m: current.length
-        });
-
-        current.push( {y: original.shift(), x: current.length, y0: 0} );
-        p.hothack({
-          start: 7,
-          end: 10,
-          image: "",
-          target: "wave",
-          text: "hello world",
-          data: current.slice(0),
-          m: current.length
-        });
-
-        current.push( {y: original.shift(), x: current.length, y0: 0} );
-        p.hothack({
-          start: 10,
-          end: 13,
-          image: "",
-          target: "wave",
-          text: "hello world",
-          data: current.slice(0),
-          m: current.length
-        });
-
-        
-        current.push( {y: original.shift(), x: current.length, y0: 0} );
-        p.hothack({
-          start: 13,
-          end: 17,
-          image: "",
-          target: "wave",
-          text: "hello world",
-          data: current.slice(0),
-          m: current.length
-        });*/
         p.play();
         document.getElementById( "button" ).addEventListener( "click", function( e ) {
         
           p.play();
         }, false );
-        addCountries();
-        populateYears();
+        //addCountries();
+        //populateYears();
       }, false );
       
       function addToWave(){
