@@ -2,11 +2,38 @@ html {
         background-color: black;
 		height: 100%;
 		width: 100%;
+		text-align: center;
 }
 #caretaker-wrapper {
-	text-align: center;
-}
-#caretaker {
 	height: 98%;
 	margin: 0px auto;
+}
+#caretaker {
+	height:100%;
+}
+#caretaker-extra {
+	visibility: hidden;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 200px;
+	height: 50px;
+	background-color: black;
+	color: white;
+	border: 2px solid white;
+	-moz-transition: opacity 2s, width .75s, height .5s;
+	-webkit-transition: opacity 2s, width .75s, height .5s;
+	transition: opacity 2s, width .75s, height .5s;
+	opacity: 0.8;
+	z-index: 500;
+	overflow: hidden;
+}
+#caretaker-extra:hover {
+	opacity: 1.0;
+	width: 1400px;
+	height: 1000px;
+	overflow: hidden;
+}
+#caretaker-extra.active {
+	visibility: visible;
 }
