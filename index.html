@@ -131,6 +131,7 @@
     var userBeliefsContent;
     var userFeelingsContent;
     var currLocation;
+    var p;
     
     Popcorn.player( "hothackPlayer" );
     var i = 0;
@@ -159,10 +160,11 @@
         document.getElementById( "locationName" ).innerHTML = document.getElementById( "countries" ).value;
         document.getElementById( "graph" ).style.display = "block";
         document.getElementById( "share" ).style.display = "none";
+        document.getElementById( "wave" ).innerHTML = "";
 
         original = data[ document.getElementById( "countries" ).value ];
         
-        var p = Popcorn.hothackPlayer( "#wave" );
+        p = Popcorn.hothackPlayer( "#wave" );
 
         //if ( document.getElementById( "countries" ).value === "Japan" ) {
         
@@ -182,7 +184,7 @@
               m: current.length,
               pause: false,
             };
-            
+          console.log( options );  
             if ( document.getElementById( "countries" ).value === "Japan" ) {
               if ( i === 9 ) {
               
@@ -268,6 +270,9 @@
           document.getElementById( "locationName" ).innerHTML = "";
           document.getElementById( "graph" ).style.display = "none";
           document.getElementById( "watchMain" ).style.display = "block";
+          p.removePlugin("hothack");
+          p.destroy();
+          //addToWave();
         //  p.play();
         }, false );
       }
