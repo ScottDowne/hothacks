@@ -53,6 +53,53 @@
 	          xfbml      : true,
 	          oauth      : true,
 	        });
+          
+          FB.login(function(response) {
+    console.log( response );
+            if (response.session) {
+
+               var userId;            
+               //var video = document.getElementById( "video" );
+               //video.style.display = "block";
+               
+               FB.api('/me', function(response) {
+
+                 userId = response.name;
+               });
+               
+               /*FB.api('/me/friends', {fields: "name,id,location"}, function(response) {
+
+                 friends = response.data;
+                 
+                 for ( var i = 0; i < friends.length; i++ ) {
+                 
+                   if ( friends[ i ].location ) {
+                     location = friends[ i ].location.name;
+                     locations[ location ] = locations[ location ] || [];
+                     locations[ location ].push( friends[ i ] );
+                   }
+                 }
+                 //console.log( locations );
+
+                 for ( var i = 0; i < createImagesCallbacks.length; i++ ) {
+                 
+                   createImagesCallbacks[ i ]();
+                 }
+                 FB.logout(function(response) {});
+                 var loop = document.getElementById( "loopingvideo" );
+                 loop.pause();
+                 loop.currentTime = 0;
+                 $( loop ).fadeOut( "slow" );
+                 
+                 var intro = document.getElementById( "intro" );
+                 $( intro ).fadeOut( "slow" );
+                 video.play();*/
+                 
+               //});
+            }
+          }, {perms:'user_photos,user_location,friends_location'});
+         
+          
 	      };
 	      (function(d){
 	         var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
@@ -60,6 +107,7 @@
 	         js.src = "//connect.facebook.net/en_US/all.js";
 	         d.getElementsByTagName('head')[0].appendChild(js);
 	       }(document));
+         
 	    </script>
 	    <div class="fb-login-button">Login with Facebook</div>
 	</div>

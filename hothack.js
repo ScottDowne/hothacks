@@ -163,6 +163,26 @@ data = [options.data];
           .attr("class", "bar")
           .attr("transform", function(d) { return "translate(" + x(d) + ",0)"; });
           
+          /*
+          
+          <linearGradient id="master" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="20" y2="0">
+<stop offset="0%" style="stop-color:rgb(0,0,0);stop-opacity:1">
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:0">
+</linearGradient>
+<rect width="432" x="0" y="334.48294096278244" height="145.01705903721756" fill="url(#master)">
+<text y="334.48294096278244">51617</text>
+stop-color:rgb(192,48,100);stop-opacity:1
+          */
+          
+      bars.append('svg:linearGradient')
+  //.attr('gradientUnits', 'userSpaceOnUse')
+  .attr('x1', "0%").attr('y1', "100%").attr('x2', "0%").attr('y2', "0%")
+  .attr('id', 'master').call(
+      function(gradient) {
+        gradient.append('svg:stop').attr('offset', '0%').attr('style', 'stop-color:rgb(0,0,0);stop-opacity:1');
+        gradient.append('svg:stop').attr('offset', '100%').attr('style', 'stop-color:rgb(192,48,0);stop-opacity:1');
+      });
+          
       bars.append("rect")
           .attr("width", x({x: .9}))
           .attr("x", 0)
@@ -171,7 +191,7 @@ data = [options.data];
         //.transition()
           //.delay(function(d, i) { return i * 10; })
           .attr("y", y1)
-          .attr("fill", "#00F")
+          .attr("fill", "url(#master)")
           //.attr("style", "color: -moz-linear-gradient(top, #55aaee, #003366)" )//background: -moz-linear-gradient(top, #55aaee, #003366)
           .attr("height", function(d) { return y0(d) - y1(d); });
 
