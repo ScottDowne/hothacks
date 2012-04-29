@@ -40,7 +40,8 @@
   </header>
   <div id="main">
 	<div id="mainTitle">
-		<h1>Immigrant Nation</h1>
+		<img src="img/title.png" width="598" height="72" alt="Title">
+		<!-- <h1>Immigrant Nation</h1> -->
 		<h2>When does your journey begin?</h2>
 		<!-- This script won't do anything until we make the fb app portion -->
 		<div id="fb-root"></div>
@@ -55,17 +56,31 @@
 	        });
           
           FB.login(function(response) {
-    console.log( response );
-            if (response.session) {
 
-               var userId;            
+            //if (response.session) {
+
+               //var userId;            
+               var userImg = document.createElement( "img" );
                //var video = document.getElementById( "video" );
                //video.style.display = "block";
                
-               FB.api('/me', function(response) {
+               userImg.src = "graph.facebook.com/" + response.authResponse.userID + "/picture?type=small";
+               //console.log( userImg );
+               
+               //FB.api('/me', function(response) {
 
-                 userId = response.name;
-               });
+               //  userId = response.name;
+               //});
+               document.getElementById( "rightImageText" ).addEventListener( "click", function( e ) {
+               
+                 
+                 document.getElementById( "watchMain" ).style.display = "none";
+               }, false );
+               document.getElementById( "mainTitle" ).style.display = "none";
+               document.getElementById( "main" ).style.display = "none";
+               document.getElementById( "watchMain" ).style.display = "block";
+               
+               //document.getElementById( "main" ).style.backgroundImage = "url();";
                
                /*FB.api('/me/friends', {fields: "name,id,location"}, function(response) {
 
@@ -94,9 +109,9 @@
                  var intro = document.getElementById( "intro" );
                  $( intro ).fadeOut( "slow" );
                  video.play();*/
-                 
+                 //graph.facebook.com/503810683/picture?type=small
                //});
-            }
+            //}
           }, {perms:'user_photos,user_location,friends_location'});
          
           
@@ -111,11 +126,22 @@
 	    </script>
 	    <div class="fb-login-button">Login with Facebook</div>
 	</div>
-		
-  </div>
-  <footer>
 
-  </footer>
+  </div>
+
+    
+  <div id="watchMain" style="display:none;" >
+		<div id="leftImage">
+			<img src="img/haru_josie_hug.png" width="861" height="800" alt="Haru Josie Hug"></div>
+		<div id="rightImage">
+			<img src="img/426686_10100710959927410_920074_57565057_2131925104_n.jpg" alt="Kae Test"></div>
+	<div class="block" style="height: 300px;">
+		<div class="center">
+		<div id="leftImageText"><h1>watch an immigration story</h1></div>
+		<div id="rightImageText"><h1>share your story</h1></div>
+		</div>
+	</div>
+  </div>
 
 
   <!-- JavaScript at the bottom for fast page loading -->
