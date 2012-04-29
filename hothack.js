@@ -232,7 +232,10 @@ stop-color:rgb(192,48,100);stop-opacity:1
           //.attr("width", x({x: .9}))
           //.attr("x", 0)
           .attr("y", y1)
-          .attr( "fill", "white" )
+          .attr( "fill", "#e8e0cd" )
+          .attr("dy", "-.68em")
+          .attr("dx", x({x: .18}))
+
           //.attr("text-anchor", "middle")
           //.attr("height", 0)
           .text(y3);
@@ -243,10 +246,10 @@ stop-color:rgb(192,48,100);stop-opacity:1
           .attr("class", "label")
           .attr("x", x)
           .attr("y", height + 6)
-          .attr("dx", x({x: .45}))
+          .attr("dx", x({x: .87}))
           .attr("dy", ".71em")
           .attr("text-anchor", "middle")
-          .attr( "fill", "white" )
+          .attr( "fill", "#e8e0cd")
           .text(function(d, i) { return dates[i]; });
           //.text(function(d, i) { return i; });
 
