@@ -232,7 +232,7 @@ stop-color:rgb(192,48,100);stop-opacity:1
           //.attr("width", x({x: .9}))
           //.attr("x", 0)
           .attr("y", y1)
-          .attr( "fill", "#e8e0cd" )
+          .attr( "fill", "#222" )
           .attr("dy", "-.68em")
           .attr("dx", x({x: .18}))
 
@@ -249,7 +249,8 @@ stop-color:rgb(192,48,100);stop-opacity:1
           .attr("dx", x({x: .87}))
           .attr("dy", ".71em")
           .attr("text-anchor", "middle")
-          .attr( "fill", "#e8e0cd")
+          .attr( "fill", "#222")
+		.attr("font-weight", "bold")
           .text(function(d, i) { return dates[i]; });
           //.text(function(d, i) { return i; });
 
