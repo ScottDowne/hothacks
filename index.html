@@ -127,6 +127,9 @@
     var current = [];
     var iteration = 0;
     var userImage;
+    var textContent;
+    var userBeliefsContent;
+    var userFeelingsContent;
     
     Popcorn.player( "hothackPlayer" );
     var i = 0;
@@ -159,34 +162,51 @@
         
         var p = Popcorn.hothackPlayer( "#wave" );
 
-        if ( document.getElementById( "countries" ).value === "Japan" ) {
+        //if ( document.getElementById( "countries" ).value === "Japan" ) {
         
-        } else if ( document.getElementById( "countries" ).value === "Mexico" ) {
-        
-        }// else {
+        //} else if ( document.getElementById( "countries" ).value === "Mexico" ) {
+          
+        //}// else {
         i = 0;
           while ( original.length ) {
+
           
             var options = {
               start: iteration,
-              end: iteration+=0.1,
+              end: iteration+=0.5,
               target: "wave",
               data: current.slice(0),
               m: current.length,
               pause: false,
-              //text: "hello world",
-              //image: "http://americanhistory.si.edu/onthemove/img/crops/665.jpg",
-              //content: "waveContent"
-            }
+            };
+            
+            if ( document.getElementById( "countries" ).value === "Japan" ) {
+              if ( i === 9 ) {
+              
+                options.image = "Japan/1_jwavephoto2.jpg";
+                options.audio = "Japan/audio/1_Japanese_1-2.wav";
+                options.content = "waveContent";
+              }
+//            1st stop at 1910
+//2nd stop at 1930
+//3rd stop at 1940
+//4th stop at 1990
+              //if ( i === 1 ) 
+            } else if ( document.getElementById( "countries" ).value === "Mexico" ) {
+//              1st stop 1910
+//2nd stop 1940
+//3rd stop 1950
+//4th stop 2010
+            }// else {
             //var pause = false;
             //console.log( typeof document.getElementById( "year" ).value, typeof ""+i, document.getElementById( "year" ).value == i );
             if ( i == document.getElementById( "year" ).value ) {
             
               options.image = userImage;
               options.content = "waveContent";
-              options.text = "";
+              options.text = userFeelingsContent + "</br>" + userBeliefsContent;
               
-          console.log( options );
+          //console.log( options );
             //  pause = true;
             }
             //console.log( i );
@@ -207,14 +227,15 @@
 
       function addFeeling( element ){
 
-        document.getElementById( "feelingsOverlay" ).innerHTML = "I am " + element.value;
+        document.getElementById( "feelingsOverlay" ).innerHTML = userFeelingsContent = "I am " + element.value;
+        //userFeelingContent;
         //div.innerHTML = "<strong>I am </strong>" + element.value;
       }
 
       function addBeliefs( element ){
         //var div = document.getElementById( "beliefs" );
 
-        document.getElementById( "beliefsOverlay" ).innerHTML = "I believe " + element.value;
+        document.getElementById( "beliefsOverlay" ).innerHTML = userBeliefsContent = "I believe " + element.value;
         //div.innerHTML = "<strong>I believe </strong>" + element.value;
       }
     

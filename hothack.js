@@ -105,8 +105,9 @@ function transitionStack() {
       // should make this dynamic
       document.getElementById( "waveContent" ).innerHTML = "";
 
+      //console.log( options.pause, options.image, options.text );
       if ( options.pause || options.image || options.text ) {
-      
+
         this.pause();
 
         if ( options.content ) {
@@ -116,6 +117,7 @@ function transitionStack() {
           document.getElementById( options.content ).appendChild( image );
         
           var div = document.createElement( "div" );
+          div.style.color = "white";
           div.innerHTML = options.text;
           document.getElementById( options.content ).appendChild( div );
           document.getElementById( options.content ).innerHTML += "<h2><span><div id='feelings'></div><div id='beliefs'></div></span></h2>";
