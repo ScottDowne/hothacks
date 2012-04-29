@@ -217,6 +217,13 @@ td { vertical-align: top; }
 /* ==|== primary styles =====================================================
    Author: Bailey
    ========================================================================== */
+a {
+	text-decoration: none;
+}
+
+h1, h2, h3, p {
+	font-family: 'Questrial', sans-serif;	
+}
 
 #main {
 	background-color: black;
@@ -224,23 +231,25 @@ td { vertical-align: top; }
 
 #mainTitle {
 	text-align: center;
-	color: white;
 	width: 70%;
 	float: right;
 	padding-top: 15%;
 	}
 	
-#mainTitle h1 {
-	font-family: 'Exo', sans-serif;
-	font-size: 4em;	
-	margin: 0;	
+#mainTitle img {
+	margin: 0;
+	padding: 0;
 }
+	
 
 #mainTitle h2 {
-	font-family: ;
-	font-size: 2em;	
+	font-size: 1.5em;
+	line-height: 1;	
+	color: #e8e0cd;
 	margin: 0;
-}
+	padding: 0 0 10px 0;
+/*	text-shadow: -3px 0 4px #B4AF91;
+*/}
 
 .block {
   text-align: center;
@@ -269,12 +278,17 @@ td { vertical-align: top; }
 	margin-right:auto;
 }
 
+
+#leftImageText, #rightImageText,#leftImageText a, #rightImageText a {
+	color: white;
+	text-align: center;
+	
+}
+
 #leftImageText {
 	width: 60%;
 	position: relative;
 	z-index: 4;
-	color: white;
-	text-align: center;
 	float: left;
 	
 }
@@ -285,10 +299,7 @@ td { vertical-align: top; }
 	position: relative;
 	float: left;
 	z-index:3;
-	color: white;
-	text-align: center;
 }
-
 
 #rightImage {
 	background-color: black;
@@ -300,6 +311,8 @@ td { vertical-align: top; }
 	z-index:1;
 }
 
+
+
 #play {
 	position: relative;
 	z-index:5;
@@ -307,6 +320,53 @@ td { vertical-align: top; }
 
 #rightImage img{
 	max-height: 100%;
+}
+
+#photos {
+   /* Prevent vertical gaps */
+   line-height: 0;
+
+   -webkit-column-count: 5;
+   -webkit-column-gap:   0px;
+   -moz-column-count:    5;
+   -moz-column-gap:      0px;
+   column-count:         5;
+   column-gap:           0px;
+
+}
+#photos img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 1200px) {
+  #photos {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
+@media (max-width: 1000px) {
+  #photos {
+  -moz-column-count:    3;
+  -webkit-column-count: 3;
+  column-count:         3;
+  }
+}
+@media (max-width: 800px) {
+  #photos {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+@media (max-width: 400px) {
+  #photos {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
 }
 
 
