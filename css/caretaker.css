@@ -30,8 +30,8 @@ html {
 }
 #caretaker-extra:hover {
 	opacity: 1.0;
-	width: 1400px;
-	height: 1000px;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
 }
 #caretaker-extra.active {

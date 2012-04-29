@@ -29,6 +29,63 @@
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
 	<!-- Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Exo:400,900' rel='stylesheet' type='text/css'>
+  <script src="popcorn.js"></script>
+  <script src="popcorn.player.js"></script>
+  <script src="hothack.js"></script>
+  <script>
+  var data = {"Japan" :  [0,0,0,0,138,193,1583,13998,139712,77125,42057,2683,1557,41968,40956,52812,44150,66582,84552,7100,6751]};
+    Popcorn.player( "hothackPlayer" );
+    function addJapanWave(){
+      var original = [];
+      var current = [];
+      var iteration = 0;
+      var userImage;
+      var textContent;
+      var userBeliefsContent;
+      var userFeelingsContent;
+      
+      document.getElementById('caretaker').pause();
+      document.getElementById("japan").style.display = "block";
+      original = data[ "Japan" ];
+      var p = Popcorn.hothackPlayer( "#japan" );
+
+      i = 0;
+          while ( original.length ) {
+            var options = {
+              start: iteration,
+              end: iteration+=0.5,
+              target: "japan",
+              data: current.slice(0),
+              m: current.length,
+              pause: false,
+            };
+            
+            if ( i === 9 ) {             
+              options.image = "Japan/1_jwavephoto2.jpg";
+              options.audio = "Japan/audio/1_Japanese_1-2.wav";
+              options.content = "waveContent";
+            }
+            if ( i == document.getElementById( "year" ).value ) {
+            
+              options.image = userImage;
+              options.content = "waveContent";
+              options.text = userFeelingsContent + "</br>" + userBeliefsContent;
+            }
+            i++;
+          
+            current.push( {y: original.shift(), x: current.length, y0: 0} );
+
+            p.hothack(options);
+            
+          }
+          p.play();
+    }
+
+    function leaveJapanWave(){
+      document.getElementById('caretaker').play();
+      document.getElementById("japan").style.display = "none";
+    }
+  </script>
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -38,8 +95,9 @@
 
   </header>
 <div id="caretaker-wrapper">
-	<div id="caretaker-extra" onmouseover="document.getElementById('caretaker').pause();" onmouseout="document.getElementById('caretaker').play();" data-active-during="99-107">
-HELLO!!!
+	<div id="caretaker-extra" onmouseover="addJapanWave();" onmouseout="document.getElementById('caretaker').play();" data-active-during="99-107">
+Mouse over here to see the Japan Wave!
+  <div id="japan" style="display: none"></div>
 	</div>
   <video autoplay controls id="caretaker">
 		<source src="video/caretaker.webm">
