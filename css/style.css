@@ -252,13 +252,23 @@ td { vertical-align: top; }
 	
 }
 
+#leftImageText {
+	position: absolute;
+	z-index: 4;
+}
+
 #rightImage {
-	left:500px;
+	left:675px;
 	top:0px;
 	position: absolute;
 	max-height: 800px;
 	overflow: hidden;
 	z-index:1;
+}
+
+#rightImageText {
+	position: absolute;
+	z-index:3;
 }
 
 
