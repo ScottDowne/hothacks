@@ -1,9 +1,18 @@
-html { 
+#main { 
         background: url('../img/josiebackground.jpg') no-repeat center center fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-		height: 100%;
+
+    bottom: 0px;
+    top: 0px;
+    position: absolute;
+    
 		width: 100%;
+}
+
+body {
+
+  background-color: #000;
 }

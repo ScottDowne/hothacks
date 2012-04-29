@@ -55,7 +55,7 @@
 	        });
           
           FB.login(function(response) {
-    console.log( response );
+
             //if (response.session) {
 
                //var userId;            
@@ -70,9 +70,16 @@
 
                //  userId = response.name;
                //});
+               document.getElementById( "rightImageText" ).addEventListener( "click", function( e ) {
                
+                 
+                 document.getElementById( "watchMain" ).style.display = "none";
+               }, false );
                document.getElementById( "mainTitle" ).style.display = "none";
+               document.getElementById( "main" ).style.display = "none";
                document.getElementById( "watchMain" ).style.display = "block";
+               
+               //document.getElementById( "main" ).style.backgroundImage = "url();";
                
                /*FB.api('/me/friends', {fields: "name,id,location"}, function(response) {
 
@@ -118,6 +125,9 @@
 	    </script>
 	    <div class="fb-login-button">Login with Facebook</div>
 	</div>
+
+  </div>
+
     
   <div id="watchMain" style="display:none;" >
 		<div id="leftImage">
@@ -131,11 +141,6 @@
 		</div>
 	</div>
   </div>
-
-  </div>
-  <footer>
-
-  </footer>
 
 
   <!-- JavaScript at the bottom for fast page loading -->
