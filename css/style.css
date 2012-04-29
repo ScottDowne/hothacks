@@ -221,7 +221,7 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, h3, p {
+h1, h2, h3, p, a {
 	font-family: 'Questrial', sans-serif;	
 }
 
@@ -258,7 +258,7 @@ h1, h2, h3, p {
 .block:before {
   content: '';
   display: inline-block;
-  height: 100%;
+  height: 150%;
   vertical-align: middle;
   margin-right: -0.25em; /* Adjusts for spacing */
 }
@@ -269,14 +269,7 @@ h1, h2, h3, p {
   width: 100%;
 }
 
-#leftImage {
-	position: absolute;
-	z-index:2;
-	left: 0px;
-	top: 0px;
-	margin-left:auto;
-	margin-right:auto;
-}
+
 
 
 #leftImageText, #rightImageText,#leftImageText a, #rightImageText a {
@@ -285,21 +278,7 @@ h1, h2, h3, p {
 	
 }
 
-#leftImageText {
-	width: 60%;
-	position: relative;
-	z-index: 4;
-	float: left;
-	
-}
 
-#rightImageText {
-	width: 40%;
-	height: 100%;
-	position: relative;
-	float: left;
-	z-index:3;
-}
 
 #rightImage {
 	background-color: black;
@@ -311,6 +290,49 @@ h1, h2, h3, p {
 	z-index:1;
 }
 
+#leftImage {
+	position: absolute;
+	z-index:2;
+	left: 0px;
+	top: 0px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#leftImageTextContainer {
+	width: 60%;
+	height: 100%;
+	position: relative;
+	float: left;
+	z-index:3;
+}
+
+#rightImageTextContainer {
+	width: 40%;
+	height: 100%;
+	position: relative;
+	float: left;
+	z-index:4;
+	
+}
+
+#leftImageText, #rightImageText {
+	width: 50%;
+	margin: 0px auto;
+	height: 100%;
+	position: relative;
+	z-index: 5;
+	background-color:white;
+	opacity: .6;
+	border-radius: 15px;
+	
+}
+
+#rightImageText a, #leftImageText a {
+	color: black;
+	font-size: 1.5em;
+	opacity: 1;
+}
 
 
 #play {
