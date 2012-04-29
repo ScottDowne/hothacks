@@ -270,10 +270,7 @@
                var userImg = document.createElement( "img" );
                //var video = document.getElementById( "video" );
                //video.style.display = "block";
-               
-//<<<<<<< HEAD
-//               userImg.src = "graph.facebook.com/" + response.authResponse.userID + "/photos";
-//=======
+            
                userImg.src = userImage = "https://graph.facebook.com/" + response.authResponse.userID + "/picture?type=large";
 //>>>>>>> 71afbb5530735709593f4a206a40b4e7a2ee47a4
                //console.log( userImg );
@@ -388,20 +385,23 @@
     
   <div id="watchMain" style="display:none;" >
 		<div id="leftImage">
-			<img src="img/haru_josie_hug.png" width="861" height="800" alt="Haru Josie Hug"></div>
+			<img src="img/haru_josie_hug.png" width="861" height="800" alt="Haru Josie Hug">
+		</div>
 		<div id="rightImage">
-
 			<div id="photos">
-				<!-- <img src="http://placekitten.com/300/235" alt=""><img src="http://placedog.com/300/323" alt=""><img src="http://placekitten.com/300/308" alt=""><img src="http://placedog.com/300/306" alt=""><img src="http://placekitten.com/300/378" alt=""><img src="http://placedog.com/300/353" alt=""><img src="http://placekitten.com/300/307" alt=""><img src="http://placedog.com/300/302" alt=""><img src="http://placekitten.com/300/337" alt=""><img src="http://placedog.com/300/260" alt=""><img src="http://placekitten.com/300/393" alt=""><img src="http://placedog.com/300/350" alt=""><img src="http://placekitten.com/300/298" alt=""><img src="http://placedog.com/300/252" alt=""><img src="http://placekitten.com/300/345" alt=""><img src="http://placedog.com/300/331" alt=""><img src="http://placekitten.com/300/337" alt=""><img src="http://placedog.com/300/251" alt=""><img src="http://placekitten.com/300/218" alt=""><img src="http://placedog.com/300/343" alt=""><img src="http://placekitten.com/300/264" alt=""><img src="http://placedog.com/300/226" alt=""><img src="http://placekitten.com/300/371" alt=""><img src="http://placedog.com/300/356" alt=""><img src="http://placekitten.com/300/318" alt=""><img src="http://placedog.com/300/216" alt=""><img src="http://placekitten.com/300/317" alt=""><img src="http://placedog.com/300/400" alt=""><img src="http://placekitten.com/300/279" alt=""><img src="http://placedog.com/300/400" alt=""> -->	
-			</div></div>
+			</div>
+		</div>
 
 	<div class="block" style="height: 300px;">
-		<div class="center">
-		<div id="leftImageText"><a href="#"><h1>watch an immigration story</h1></a></div>
-		<div id="rightImageText"><a href="#"><h1>share your story</h1></a></div>
+		<div class="center">			
+			<div id="leftImageTextContainer">
+				<div id="leftImageText"><a href="#">watch an immigration story</a></div>
+			</div>
+			<div id="rightImageTextContainer">
+				<div id="rightImageText"><a href="#">share your story</a></div>
+			</div>
 		</div>
-	</div>
-  </div>
+  	</div>
 
 
   <div id="graph">
