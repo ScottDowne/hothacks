@@ -130,6 +130,7 @@
     var textContent;
     var userBeliefsContent;
     var userFeelingsContent;
+    var currLocation;
     
     Popcorn.player( "hothackPlayer" );
     var i = 0;
@@ -155,6 +156,7 @@
         //var span = document.getElementById( "info" );
 
         //alert("More to come!");
+        document.getElementById( "locationName" ).innerHTML = document.getElementById( "countries" ).value;
         document.getElementById( "graph" ).style.display = "block";
         document.getElementById( "share" ).style.display = "none";
 
@@ -168,6 +170,7 @@
           
         //}// else {
         i = 0;
+        //currLocation = document.getElementById( "countries" ).value;
           while ( original.length ) {
 
           
@@ -260,9 +263,12 @@
           }
         //}
         p.play();
-        document.getElementById( "button" ).addEventListener( "click", function( e ) {
+        document.getElementById( "back" ).addEventListener( "click", function( e ) {
         
-          p.play();
+          document.getElementById( "locationName" ).innerHTML = "";
+          document.getElementById( "graph" ).style.display = "none";
+          document.getElementById( "watchMain" ).style.display = "block";
+        //  p.play();
         }, false );
       }
 
@@ -454,7 +460,8 @@
     <div style="width: 100%;" id="waveContent">
 
     </div>
-    <button style="position: absolute; left: 0px;" id="button">next ></button>
+    <div style="color: black; text-shadow: white 2px 2px 6px; font-weight: bold; position: absolute; top: 0px; right: 20px; font-size: 30px;" id="back">Back</div>
+    <div style="color: white; text-shadow: black 2px 2px 6px; font-weight: bold; position: absolute; top: 80px; right: 20px; font-size: 70px;" id="locationName"></div>
     <div style="position: absolute; bottom: 0px;" id="wave"></div>
   </div>
 
