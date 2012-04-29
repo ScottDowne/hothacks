@@ -385,6 +385,16 @@ h1, h2, h3, p, a {
   }
 }
 
+#waveContent {
+	padding: 20px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#waveContent img{
+	padding: 10px;
+	
+}
+
 
 
 
