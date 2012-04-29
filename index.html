@@ -289,9 +289,9 @@
 	                       FB.api("/me/photos", function(info) {
 								if(info.data&&info.data[0].images){//we have data from FB
 								
-									for(i=0;i<=50;i++){
+									for(i=0;i<=25;i++){
 									//	alert(i);
-										if(info.data[i].images[2]){
+										if(info.data[i] && info.data[i].images[2]){
 										//	alert(info.data[i].images[2].source);
 											$('#photos').append( '<img src="' + info.data[i].images[2].source + '" />' ); 
 										}
