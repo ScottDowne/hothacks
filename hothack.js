@@ -114,7 +114,7 @@ function transitionStack() {
           var div = document.createElement( "div" );
           div.innerHTML = options.text;
           document.getElementById( options.content ).appendChild( div );
-          
+          document.getElementById( options.content ).innerHTML += "<h2><span><div id='feelings'></div><div id='beliefs'></div></span></h2>";
         }
       }
       //options.pause && this.pause();

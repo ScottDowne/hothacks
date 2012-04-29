@@ -82,6 +82,35 @@
     
       Popcorn.player( "hothackPlayer" );
     var i = 0;
+
+    function addCountries(){
+      var option,
+          countries = document.getElementById( "countries" ),
+          data2 = [];
+      Popcorn.forEach( data, function( value, key, item ) {
+        data2.push(key);
+      });
+
+      data2.sort();
+
+      for( i = 0; i < data2.length; i++){
+        option = document.createElement( "OPTION" );
+        option.value = option.innerHTML = data2[i];
+        countries.appendChild( option );
+      }
+    }
+
+    function populateYears(){
+      var year = new Date().getFullYear(),
+          option,
+          years = document.getElementById( "year" );
+
+      for( i = 0; i < 80; i++ ){
+        option = document.createElement( "option" );
+        option.value = option.innerHTML = year - i;
+        years.appendChild( option );
+      }
+    }
       document.addEventListener( "DOMContentLoaded", function( e ) {
       
         var p = Popcorn.hothackPlayer( "#wave" );
@@ -172,12 +201,60 @@
         
           p.play();
         }, false );
+        addCountries();
+        populateYears();
       }, false );
+      
+      function addToWave(){
+        var span = document.getElementById( "info" );
+
+        alert("More to come!");
+      }
+
+      function addFeeling( element ){
+        var div = document.getElementById( "feelings" );
+
+        div.innerHTML = "<strong>I am </strong>" + element.value;
+      }
+
+      function addBeliefs( element ){
+        var div = document.getElementById( "beliefs" );
+
+        div.innerHTML = "<strong>I believe </strong>" + element.value;
+      }
     </script>
+    <style>
+      h2 span {
+        color: white;
+        font: 15px/30px Helvetica, Sans-Serif;
+        letter-spacing: -1px;
+      }
+      #content {
+        position: relative;
+      }
+
+      h2 {
+        position: absolute;
+        bottom: 40px;
+        left: 7px;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
     <div id="wave"></div>
     <button id="button">next ></button>
     <div id="content"></div>
+    <div style="border: 1px solid; width: 400px; height: 200px; top: 530px; left: 400px; position: absolute;" id="form">
+      My immigrant story begins in 
+      <select id="year"></select> (year), <br>
+      when <input type="text" id="relative" /> (I/ my relative) <br>
+      left 
+      <select id="countries">
+      </select> (country) for the U.S. <br><br>
+      I am <input type="text" id="feeling" onblur="addFeeling(this);"/><br>
+      I believe <input type="text" id="beliefs" onblur="addBeliefs(this);"/><br><br>
+      <button onclick="addToWave();" style="float: right;">Add To The Wave</button>
+    </div>
   </body>
 </html>
