@@ -306,11 +306,13 @@
         option.innerHTML = dates[i];//year - i;
         years.appendChild( option );
       }
-    }      
+    }
+
+    var appId = ( window.location.hostname === "scottdowne.github.com" ? "323180577754041" : "290949350991319" );
 
 	      window.fbAsyncInit = function() {
 	        FB.init({
-	          appId      : '290949350991319',
+	          appId      : appId,
 	          status     : true, 
 	          cookie     : true,
 	          xfbml      : true,
